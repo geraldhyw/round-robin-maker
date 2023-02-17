@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
 }
 
 code {
@@ -17,4 +18,8 @@ code {
   --background-color: #E6E6E6;
   --primary-blue: #225EA7;
   --primary-white: white;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
 }

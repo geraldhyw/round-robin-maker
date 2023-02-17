@@ -4,17 +4,17 @@ import '../css/Navbar.css'
 const Navbar = () => {
   return (
     <header>
-			<div className='container'>
-				<div className='container-left'>
-					<Link to='/' className='link-title'>
+			<div className='nav-container'>
+				<div className='nav-container-left'>
+					<Link to='/' className='nav-link-title'>
 						RoundRobin
 					</Link>
 				</div>
-				<div className='container-right'>
-					<Link to='/' className='link-item'>
+				<div className='nav-container-right'>
+					<Link to='/' className='nav-link-item'>
 						tables
 					</Link>
-					<Link to='/table-form' className='link-item'>
+					<Link to='/table-form' className='nav-link-item'>
 						create
 					</Link>
 				</div>
