@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0px var(--horizontal-margin);
+    background-color: var(--primary-blue);
+}
+
+.container-right {
+    display: flex;
+    flex-direction: row;
+}
+
+.container-right > .link-item {
+    margin-left: 20px;
+}
+
+.link-title, .link-item {
+    text-decoration: none;
+    color: var(--primary-white);
+    padding: 20px 0px;
+}
+
+.link-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.link-item {
+    font-weight: 400;
+}
+
+.link-item:hover, .link-title:hover {
+    color: #b8b8b8;
+}
