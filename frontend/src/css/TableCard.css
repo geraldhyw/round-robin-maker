@@ -1,3 +1,17 @@
 .card-container {
-    background-color: red;
+    background-color: white;
+
+    margin: 0px var(--horizontal-margin);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card-container-left, .card-container-right {
+    font-weight: 400;
+}
+
+.card-container-right {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 50px;
 }
