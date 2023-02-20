@@ -5,18 +5,18 @@ import TableCard from '../components/TableCard'
 const Home = () => {
   return (
 		<div>
-		<div className="home-header">
-			<h2>Tables</h2>
-		</div>
-
-		<div className="home-body">
-			<TableCard />
-			<div className="home-button-container">
-				<Link to="/table-form" className="blue-button">
-					Add Table
-				</Link>
+			<div className="home-header">
+				<h2>Tables</h2>
 			</div>
-		</div>
+
+			<div className="home-body">
+				<TableCard />
+				<div className="home-button-container">
+					<Link to="/table-form" className="blue-button">
+						Add Table
+					</Link>
+				</div>
+			</div>
 		</div>
   )
 }

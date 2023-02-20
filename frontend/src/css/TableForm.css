@@ -1,0 +1,43 @@
+.form-header {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.form-body {
+    margin: 0px var(--horizontal-margin);
+}
+
+.form-body-top {
+
+}
+
+.form-body-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 50px;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0px;
+}
+
+
+.form-label {
+    padding-bottom: 6px;
+}
+
+.form-input {
+    border: none;
+    height: 34px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.form-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
