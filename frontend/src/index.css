@@ -18,8 +18,26 @@ code {
   --background-color: #dbdbdb;
   --primary-blue: #225EA7;
   --primary-white: white;
+  --secondary-blue: #4177b9;
 }
 
 h1, h2, h3, h4 {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.blue-button {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  padding: 10px 50px;
+  border-radius: 50px;
+  border-color: transparent;
+  font-weight: bold;
+}
+
+.blue-button:hover {
+  background-color: var(--secondary-blue);
 }

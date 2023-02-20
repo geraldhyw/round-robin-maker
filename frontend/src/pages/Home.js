@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../css/Home.css'
 import TableCard from '../components/TableCard'
 
@@ -10,7 +11,11 @@ const Home = () => {
 
 		<div className="home-body">
 			<TableCard />
-			<button></button>
+			<div className="home-button-container">
+				<Link to="/table-form" className="blue-button">
+					Add Table
+				</Link>
+			</div>
 		</div>
 		</div>
   )
