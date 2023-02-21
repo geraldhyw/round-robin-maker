@@ -29,11 +29,19 @@
 }
 
 .draw {
-    background-color: var(--secondary-blue);
+    background-color: var(--fixture-blue);
 }
 
 .blackout {
     background-color: var(--fixture-grey);
+}
+
+.hoverable {
+    cursor: pointer;
+}
+
+.hoverable:hover, .hoverable:focus {
+    background-color: #bfbfbf;
 }
 
 .three {
@@ -54,4 +62,10 @@
 .six {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
+}
+
+.indi-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
 }

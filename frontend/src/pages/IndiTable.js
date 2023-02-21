@@ -7,21 +7,27 @@ const IndiTable = () => {
   let threeTeamTable = 
   [
     ['', 'team1', 'team2', 'team3', 'Points', ''],
-    ['team1', '', [0, 0], [0, 0], '0pts', '1st'],
-    ['team2', [0, 0], '', [0, 0], '0pts', '1st'],
-    ['team3', [0, 0], [0, 10], '', '0pts', '1st'],
+    ['team1', '', [0, 0], [1, 1], '0', '1st'],
+    ['team2', [10, 0], '', [0, 0], '0', '1st'],
+    ['team3', [0, 0], [0, 10], '', '0', '1st'],
   ]
 
   let sixTeamTable = 
   [
     ['', 'team1', 'team2', 'team3', 'team4', 'team5', 'team6', 'Points', ''],
-    ['team1', '', [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], '0pts', '1st'],
-    ['team2', [0, 0], '', [0, 0], [0, 0], [0, 0], [0, 0], '0pts', '1st'],
-    ['team3', [0, 0], [0, 10], '', [0, 0], [0, 0], [0, 0], '0pts', '1st'],
-    ['team4', [0, 0], [0, 0], [1, 1], '', [0, 0], [0, 0], '0pts', '1st'],
-    ['team5', [0, 0], [0, 0], [10, 0], [0, 0], '',  [0, 0], '0pts', '1st'],
-    ['team6', [0, 0], [0, 10], [0, 0], [0, 0], [0, 0], '', '0pts', '1st'],
+    ['team1', '', [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
+    ['team2', [0, 0], '', [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
+    ['team3', [0, 0], [0, 10], '', [0, 0], [0, 0], [0, 0], '0', '1st'],
+    ['team4', [0, 0], [0, 0], [1, 1], '', [0, 0], [0, 0], '0', '1st'],
+    ['team5', [0, 0], [0, 0], [10, 0], [0, 0], '',  [0, 0], '0', '1st'],
+    ['team6', [0, 0], [0, 10], [0, 0], [0, 0], [0, 0], '', '0', '1st'],
   ]
+
+  // {
+  //   type: "", 
+  //   score: "",
+  //   msg: ""
+  // }
    
   return (
     <div>
@@ -54,6 +60,10 @@ const IndiTable = () => {
                 } else {
                   className += " lose"
                 }
+
+                if (rowIndex > colIndex) {
+                  className += " hoverable"
+                }
               }
 
               // check for same team
@@ -62,16 +72,21 @@ const IndiTable = () => {
               }
 
               return (
-                <div key={rowIndex*row.length + colIndex} className={className}>
-                  {item}
-                </div>
+                <div key={rowIndex*row.length + colIndex} className={className} contentEditable>
+                  { Array.isArray(item) ? 
+                    item[0] + " - " + item[1]
+                    : 
+                    item
+                  }
+                </div> 
             )}))
           })}
         </div>
 
-
-
         {/* button */}
+        <div className="indi-button-container">
+					<button className="blue-button">Update</button>
+				</div>
       </div>
     </div>
   )
