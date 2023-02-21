@@ -10,7 +10,9 @@ const Home = () => {
 			</div>
 
 			<div className="home-body">
-				<TableCard />
+				<Link to="/indi-table" className="plain-link">
+					<TableCard />
+				</Link>
 				<div className="home-button-container">
 					<Link to="/table-form" className="blue-button">
 						Add Table

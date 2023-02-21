@@ -1,0 +1,57 @@
+.indi-header {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.indi-table-item {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.table-border {
+    outline: 1px solid black;
+    margin-bottom: 1px;
+    margin-right: 1px;
+}
+
+.indi-table {
+    margin: 0px var(--horizontal-margin);
+}
+
+.lose {
+    background-color: var(--fixture-red);
+}
+
+.win {
+    background-color: var(--fixture-green);
+}
+
+.draw {
+    background-color: var(--secondary-blue);
+}
+
+.blackout {
+    background-color: var(--fixture-grey);
+}
+
+.three {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.four {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.five {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.six {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}

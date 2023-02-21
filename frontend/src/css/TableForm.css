@@ -36,6 +36,10 @@
     padding-right: 12px;
 }
 
+.form-input:focus {
+    outline: none;
+}
+
 .form-button-container {
     display: flex;
     justify-content: center;
