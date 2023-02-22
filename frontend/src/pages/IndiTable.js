@@ -4,9 +4,7 @@ import { useLocation } from 'react-router-dom'
 const IndiTable = () => {
   const location = useLocation()
   const table = location.state
-  console.log(table)
 
-  console.log(table.numTeams)
   let wordNumTeams = ''
   switch(table.numTeams) {
     case 3:
@@ -30,50 +28,6 @@ const IndiTable = () => {
     default:
       wordNumTeams = 'three'
   }
-
-  console.log(wordNumTeams)
-  console.log(table.teamScores)
-
-  let rowFiller = ['', 'team1', 'team2', 'team3']
-  let colFiller = ['', 'team1', 'team2', 'team3', 'Points', '']
-
-  let threeTeamTable = 
-  [
-    ['', 'team1', 'team2', 'team3', 'Points', ''],
-    ['team1', '', [0, 0], [1, 1], '0', '1st'],
-    ['team2', [10, 0], '', [0, 0], '0', '1st'],
-    ['team3', [0, 0], [0, 10], '', '0', '1st'],
-  ]
-
-  let sixTeamTable = 
-  [
-    ['', 'team1', 'team2', 'team3', 'team4', 'team5', 'team6', 'Points', ''],
-    ['team1', '', [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team2', [0, 0], '', [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team3', [0, 0], [0, 10], '', [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team4', [0, 0], [0, 0], [1, 1], '', [0, 0], [0, 0], '0', '1st'],
-    ['team5', [0, 0], [0, 0], [10, 0], [0, 0], '',  [0, 0], '0', '1st'],
-    ['team6', [0, 0], [0, 10], [0, 0], [0, 0], [0, 0], '', '0', '1st'],
-  ]
-
-  let eightTeamTable = 
-  [
-    ['', 'team1', 'team2', 'team3', 'team4', 'team5', 'team6', 'team7', 'team8', 'Points', ''],
-    ['team1', '', [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team2', [0, 0], '', [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team3', [0, 0], [0, 10], '', [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team4', [0, 0], [0, 0], [1, 1], '', [0, 0], [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team5', [0, 0], [0, 0], [10, 0], [0, 0], '',  [0, 0], [0, 0], [0, 0], '0', '1st'],
-    ['team6', [0, 0], [0, 10], [0, 0], [0, 0], [0, 0], '', [0, 0], [0, 0], '0', '1st'],
-    ['team7', [0, 0], [0, 10], [0, 0], [0, 0], [0, 0], [0, 0], '', [0, 0], '0', '1st'],
-    ['team8', [0, 0], [0, 10], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], '', '0', '1st'],
-  ]
-
-  // {
-  //   type: "", 
-  //   score: "",
-  //   msg: ""
-  // }
    
   return (
     <div>
@@ -83,9 +37,7 @@ const IndiTable = () => {
 
       <div className='indi-body'>
         {/* table  */}
-        
         <div className={"indi-table " + wordNumTeams}> 
-        {/* change number of rows above^  */}
           {table.teamScores.map((row, rowIndex) => {
             return (row.map((item, colIndex) => {
               let className = "indi-table-item"

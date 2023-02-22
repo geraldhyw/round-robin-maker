@@ -20,33 +20,26 @@ const TableForm = () => {
   const [teamName8, setTeamName8] = useState('')
 
   const { tables, dispatch } = useTablesContext()
-
   const navigate = useNavigate()
+  let teamScores = []
   
   const createBaseTeamScores = (numTeams, teamNames) => {
-    let teamScores = new Array(numTeams+1).fill(new Array(numTeams+3).fill(''))
+    teamScores = new Array(numTeams+1).fill('').map(row => new Array(numTeams+3).fill(''))
 
-    // for (let i = 0; i < teamScores.length; i++) {
-    //   for (let j = 0; j < teamScores[0].length; j++) {
-    //     if (i !== 0 && j === 0) {
-    //       teamScores[i][j] = teamNames[i-1]
-    //     } else if (i !== 0 && j === teamScores[0].length-1) {
-    //       teamScores[i][j] = '1st'
-    //     } else if (i === j) {
-    //       teamScores[i][j] = ''
-    //     } else {
-    //       teamScores[i][j] = [0, 0]
-    //     }
-
-    //     // console.log(i, j, teamScores[i][j])
-    //   }
-    // }
-    console.log(teamScores[0])
-    console.log(teamScores[1])
-    console.log(teamScores[2])
-    console.log(teamScores[3])
-
-   
+    // set all rows except row 1
+    for (let i = 0; i < teamScores.length; i++) {
+      for (let j = 0; j < teamScores[0].length; j++) {
+        if (i !== 0 && j === 0) {
+          teamScores[i][j] = teamNames[i-1]
+        } else if (i !== 0 && j === teamScores[0].length-1) {
+          teamScores[i][j] = '1st'
+        } else if (i === j) {
+          teamScores[i][j] = ''
+        } else {
+          teamScores[i][j] = [0, 0]
+        }
+      }
+    }
 
     // set row 1 (index 0)
     for (let j = 0; j < teamScores[0].length; j++) {
@@ -59,13 +52,8 @@ const TableForm = () => {
       }
     }
 
-
-    console.log(teamScores[0])
-    console.log(teamScores[1])
-    console.log(teamScores[2])
-    console.log(teamScores[3])
+    console.log(teamScores)
     return teamScores
-    // console.log(teamScores)
   }
 
 
@@ -79,23 +67,23 @@ const TableForm = () => {
 
     let table = { tableName, numTeams, winPoints, drawPoints, losePoints, teamNames, teamScores }
 
-    // const response = await fetch('/api/tables', {
-    //   method: 'POST',
-    //   body: JSON.stringify(table),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
+    const response = await fetch('/api/tables', {
+      method: 'POST',
+      body: JSON.stringify(table),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
 
-    // const json = await response.json()
+    const json = await response.json()
 
-    // if (!response.ok) {
-    //   console.log(json.error)
-    // } else {
-    //   dispatch({type: 'CREATE_TABLE', payload: json})
-    //   console.log('success!')
-    //   navigate('/', { replace: true })
-    // }
+    if (!response.ok) {
+      console.log(json.error)
+    } else {
+      dispatch({type: 'CREATE_TABLE', payload: json})
+      console.log('success!')
+      navigate('/', { replace: true })
+    }
   }
 
   return (
