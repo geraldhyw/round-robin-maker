@@ -8,7 +8,7 @@ const TableCard = ({table}) => {
   const { tables, dispatch } = useTablesContext()
   
   const handleDelete = (e) => {
-    e.stopPropagation()
+    e.preventDefault()
     const deleteTable = async () => {
       const response = await fetch('/api/tables/' + table._id, {
         method: 'DELETE'

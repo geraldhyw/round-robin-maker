@@ -25,30 +25,30 @@ const TableForm = () => {
   
   const createBaseTeamScores = (numTeams, teamNames) => {
     let teamScores = new Array(numTeams+1).fill(new Array(numTeams+3).fill(''))
-    // let teamScores = new Array(numTeams+1)
-    // let col1 = new Array(1).fill('').append(teamNames).append(['Points', ''])
-    // let tmp1 = ['']
-    // let tmp2 = ['Points', '']
-    // let col1 = tmp1.append(teamNames.append(tmp2))
 
-    console.log(numTeams, teamNames)
+    // for (let i = 0; i < teamScores.length; i++) {
+    //   for (let j = 0; j < teamScores[0].length; j++) {
+    //     if (i !== 0 && j === 0) {
+    //       teamScores[i][j] = teamNames[i-1]
+    //     } else if (i !== 0 && j === teamScores[0].length-1) {
+    //       teamScores[i][j] = '1st'
+    //     } else if (i === j) {
+    //       teamScores[i][j] = ''
+    //     } else {
+    //       teamScores[i][j] = [0, 0]
+    //     }
 
-    for (let i = 0; i < teamScores.length; i++) {
-      for (let j = 0; j < teamScores[0].length; j++) {
-        if (i !== 0 && j === 0) {
-          teamScores[i][j] = teamNames[i-1]
-        } else if (i !== 0 && j === teamScores[0].length-1) {
-          teamScores[i][j] = '1st'
-        } else if (i === j) {
-          teamScores[i][j] = ''
-        } else {
-          teamScores[i][j] = [0, 0]
-        }
+    //     // console.log(i, j, teamScores[i][j])
+    //   }
+    // }
+    console.log(teamScores[0])
+    console.log(teamScores[1])
+    console.log(teamScores[2])
+    console.log(teamScores[3])
 
-        // console.log(i, j, teamScores[i][j])
-      }
-    }
+   
 
+    // set row 1 (index 0)
     for (let j = 0; j < teamScores[0].length; j++) {
       if (j === 0 || j === teamScores[0].length-1) {
         teamScores[0][j] = ''
@@ -58,7 +58,13 @@ const TableForm = () => {
         teamScores[0][j] = teamNames[j-1]
       }
     }
-    // console.log(teamScores[0])
+
+
+    console.log(teamScores[0])
+    console.log(teamScores[1])
+    console.log(teamScores[2])
+    console.log(teamScores[3])
+    return teamScores
     // console.log(teamScores)
   }
 
@@ -66,42 +72,30 @@ const TableForm = () => {
   const handleCreate = async (e) => {
     e.preventDefault() 
 
-    // console.log(tableName)
-    // console.log(numTeams)
-    // console.log(winPoints)
-    // console.log(drawPoints)
-    // console.log(losePoints)
-    // console.log(teamName1)
-    // console.log(teamName2)
-    // console.log(teamName3)
-    // console.log(teamName4)
-    // console.log(teamName5)
-    // console.log(teamName6)
-    // console.log(teamName7)
-    // console.log(teamName8)
-
     let teamNames = [teamName1, teamName2, teamName3, teamName4, teamName5, teamName6, teamName7, teamName8]
     let teamScores = createBaseTeamScores(numTeams, teamNames)
 
+    // console.log(teamScores)
+
     let table = { tableName, numTeams, winPoints, drawPoints, losePoints, teamNames, teamScores }
 
-    const response = await fetch('/api/tables', {
-      method: 'POST',
-      body: JSON.stringify(table),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    // const response = await fetch('/api/tables', {
+    //   method: 'POST',
+    //   body: JSON.stringify(table),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
 
-    const json = await response.json()
+    // const json = await response.json()
 
-    if (!response.ok) {
-      console.log(json.error)
-    } else {
-      dispatch({type: 'CREATE_TABLE', payload: json})
-      console.log('success!')
-      navigate('/', { replace: true })
-    }
+    // if (!response.ok) {
+    //   console.log(json.error)
+    // } else {
+    //   dispatch({type: 'CREATE_TABLE', payload: json})
+    //   console.log('success!')
+    //   navigate('/', { replace: true })
+    // }
   }
 
   return (

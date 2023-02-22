@@ -1,6 +1,39 @@
 import '../css/IndiTable.css'
+import { useLocation } from 'react-router-dom'
 
 const IndiTable = () => {
+  const location = useLocation()
+  const table = location.state
+  console.log(table)
+
+  console.log(table.numTeams)
+  let wordNumTeams = ''
+  switch(table.numTeams) {
+    case 3:
+      wordNumTeams = 'three'
+      break
+    case 4:
+      wordNumTeams = 'four'
+      break
+    case 5:
+      wordNumTeams = 'five'
+      break
+    case 6:
+      wordNumTeams = 'six'
+      break
+    case 7:
+      wordNumTeams = 'seven'
+      break
+    case 8:
+      wordNumTeams = 'eight'
+      break
+    default:
+      wordNumTeams = 'three'
+  }
+
+  console.log(wordNumTeams)
+  console.log(table.teamScores)
+
   let rowFiller = ['', 'team1', 'team2', 'team3']
   let colFiller = ['', 'team1', 'team2', 'team3', 'Points', '']
 
@@ -45,15 +78,15 @@ const IndiTable = () => {
   return (
     <div>
       <div className='indi-header'>
-        <h2>National Community Games 2023 - Central Regional Qualifier</h2>
+        <h2>{table.tableName}</h2>
       </div>
 
       <div className='indi-body'>
         {/* table  */}
         
-        <div className="indi-table eight"> 
+        <div className={"indi-table " + wordNumTeams}> 
         {/* change number of rows above^  */}
-          {eightTeamTable.map((row, rowIndex) => {
+          {table.teamScores.map((row, rowIndex) => {
             return (row.map((item, colIndex) => {
               let className = "indi-table-item"
 
