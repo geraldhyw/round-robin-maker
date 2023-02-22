@@ -24,7 +24,7 @@ const TableForm = () => {
   let teamScores = []
   
   const createBaseTeamScores = (numTeams, teamNames) => {
-    teamScores = new Array(numTeams+1).fill('').map(row => new Array(numTeams+3).fill(''))
+    teamScores = new Array(numTeams+1).fill('').map(row => new Array(numTeams+2).fill(''))
 
     // set all rows except row 1
     for (let i = 0; i < teamScores.length; i++) {
@@ -32,8 +32,6 @@ const TableForm = () => {
         if (i !== 0 && j === 0) {
           teamScores[i][j] = teamNames[i-1]
         } else if (i !== 0 && j === teamScores[0].length-1) {
-          teamScores[i][j] = '1st'
-        } else if (i !== 0 && j === teamScores[0].length-2) {
           teamScores[i][j] = 0
         } else if (i === j) {
           teamScores[i][j] = ''
@@ -45,10 +43,10 @@ const TableForm = () => {
 
     // set row 1 (index 0)
     for (let j = 0; j < teamScores[0].length; j++) {
-      if (j === 0 || j === teamScores[0].length-1) {
-        teamScores[0][j] = ''
-      } else if (j === teamScores[0].length-2) {
+      if (j === teamScores[0].length-1) {
         teamScores[0][j] = 'Points'
+      } else if (j === 0) {
+        teamScores[0][j] = ''
       } else {
         teamScores[0][j] = teamNames[j-1]
       }

@@ -29,7 +29,6 @@ const Home = () => {
 			<div className="home-body">
 				{
 					tables.map((table) => {
-						console.log(table)
 						return (
 							<Link to="/indi-table" state={table} className="plain-link" key={table._id} onClick={(e) => e.stopPropagation()}>
 								<TableCard table={table}/>

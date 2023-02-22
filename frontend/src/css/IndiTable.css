@@ -46,32 +46,32 @@
 
 .three {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .four {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
 }
 
 .five {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
 }
 
 .six {
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(8, 1fr);
 }
 
 .seven {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(9, 1fr);
 }
 
 .eight {
     display: grid;
-    grid-template-columns: repeat(11, 1fr);
+    grid-template-columns: repeat(10, 1fr);
 }
 
 .indi-button-container {

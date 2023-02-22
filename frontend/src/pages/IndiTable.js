@@ -54,6 +54,76 @@ const IndiTable = () => {
       dispatch({type: 'PATCH_TABLE', payload: json})
     }
   }
+
+  const calculateTotalPoints = (rowIndex, colIndex) => {
+    let totalPoints = 0
+    let enemyTotalPoints = 0
+
+    for (let j = 1; j <= table.numTeams; j++) {
+      let leftScore = table.teamScores[rowIndex][j][0]
+      let rightScore = table.teamScores[rowIndex][j][1]
+
+      if (leftScore === 0 && rightScore === 0) {
+        continue
+      }
+
+      if (!leftScore && !rightScore) {
+        continue
+      }
+
+      if (leftScore > rightScore) {
+        // win
+        totalPoints += table.winPoints
+      } else if (rightScore > leftScore) {
+        // lose
+        totalPoints += table.losePoints
+      } else {
+        // draw
+        totalPoints += table.drawPoints
+      }
+    }
+
+    // enemy points
+    for (let j = 1; j <= table.numTeams; j++) {
+      let leftScore = table.teamScores[colIndex][j][0]
+      let rightScore = table.teamScores[colIndex][j][1]
+
+      if (leftScore === 0 && rightScore === 0) {
+        continue
+      }
+
+      if (!leftScore && !rightScore) {
+        continue
+      }
+
+      if (leftScore > rightScore) {
+        // win
+        enemyTotalPoints += table.winPoints
+      } else if (rightScore > leftScore) {
+        // lose
+        enemyTotalPoints += table.losePoints
+      } else {
+        // draw
+        enemyTotalPoints += table.drawPoints
+      }
+    }
+
+    return [totalPoints, enemyTotalPoints]
+  }
+
+  const handleScoreChange = (e, index, rowIndex, colIndex, oppIndex) => {
+    // update score
+    let newTeamScore = [...teamScores]
+    newTeamScore[rowIndex][colIndex][index] = parseInt(e.target.value)
+    newTeamScore[colIndex][rowIndex][oppIndex] = parseInt(e.target.value)
+
+    // update points
+    let points = calculateTotalPoints(rowIndex, colIndex)
+    newTeamScore[rowIndex][table.numTeams+1] = points[0]
+    newTeamScore[colIndex][table.numTeams+1] = points[1]
+
+    setTeamScores(newTeamScore)
+  }
    
   return (
     <div>
@@ -85,9 +155,7 @@ const IndiTable = () => {
                   className += " lose"
                 }
 
-                if (rowIndex > colIndex) {
-                  className += " hoverable"
-                }
+                className += " hoverable"
               }
 
               // check for same team
@@ -96,7 +164,7 @@ const IndiTable = () => {
               }
 
               return (
-                <div key={rowIndex*row.length + colIndex} className={className} contentEditable>
+                <div key={rowIndex*row.length + colIndex} className={className}>
                   { Array.isArray(item) ? 
                     // item[0] + " - " + item[1]
                     (
@@ -105,24 +173,16 @@ const IndiTable = () => {
                         className="indi-scorebox-input"
                         type='number'
                         value={teamScores[rowIndex][colIndex][0]}
-                        onChange={e => {
-                          let newTeamScore = [...teamScores]
-                          newTeamScore[rowIndex][colIndex][0] = parseInt(e.target.value)
-                          newTeamScore[colIndex][rowIndex][1] = parseInt(e.target.value)
-                          setTeamScores(newTeamScore)
-                        }}
+                        onChange={e => {handleScoreChange(e, 0, rowIndex, colIndex, 1)}}
+                        onFocus={e => e.target.select()}
                       />
                       -
                       <input 
                         className="indi-scorebox-input"
                         type='number'
                         value={teamScores[rowIndex][colIndex][1]}
-                        onChange={e => {
-                          let newTeamScore = [...teamScores]
-                          newTeamScore[rowIndex][colIndex][1] = parseInt(e.target.value)
-                          newTeamScore[colIndex][rowIndex][0] = parseInt(e.target.value)
-                          setTeamScores(newTeamScore)
-                        }}
+                        onChange={e => {handleScoreChange(e, 1, rowIndex, colIndex, 0)}}
+                        onFocus={e => e.target.select()}
                       />
                     </div>
                     )
