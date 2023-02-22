@@ -29,7 +29,7 @@ const Home = () => {
 				{
 					tables.map((table) => {
 						return (
-							<Link to="/indi-table" className="plain-link" key={table._id}>
+							<Link to="/indi-table" className="plain-link" key={table._id} onClickCapture={(e) => e.preventDefault()}>
 								<TableCard table={table}/>
 							</Link>
 						)

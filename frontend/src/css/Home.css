@@ -4,6 +4,10 @@
     padding: 20px 0px;
 }
 
+.home-body {
+    margin: 0px var(--horizontal-margin);
+}
+
 .home-button-container {
     display: flex;
     justify-content: center;

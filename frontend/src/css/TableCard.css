@@ -1,14 +1,41 @@
 .card-container {
     background-color: white;
-
-    margin: 0px var(--horizontal-margin);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
+.card-container:hover {
+    background-color: rgb(250, 250, 250);
+}
+
 .card-container-left, .card-container-right {
     font-weight: 400;
+}
+
+.circle {
+    position: absolute;
+    right: calc(var(--horizontal-margin) + 20px);
+    background-color: var(--background-color);
+    height: 36px;
+    width: 36px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle:hover {
+    background-color: #bdbaba;
+}
+
+/* .card-container-left {
+    background-color: red;
+} */
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
 }
 
 .card-container-right {
