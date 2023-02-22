@@ -33,6 +33,8 @@ const TableForm = () => {
           teamScores[i][j] = teamNames[i-1]
         } else if (i !== 0 && j === teamScores[0].length-1) {
           teamScores[i][j] = '1st'
+        } else if (i !== 0 && j === teamScores[0].length-2) {
+          teamScores[i][j] = 0
         } else if (i === j) {
           teamScores[i][j] = ''
         } else {
@@ -81,7 +83,6 @@ const TableForm = () => {
       console.log(json.error)
     } else {
       dispatch({type: 'CREATE_TABLE', payload: json})
-      console.log('success!')
       navigate('/', { replace: true })
     }
   }
