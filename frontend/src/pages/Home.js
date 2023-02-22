@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { useTablesContext } from '../hooks/useTablesContext'
 
 const Home = () => {
-	// const [tables, setTables] = useState([])
 	const { tables, dispatch } = useTablesContext()
 
 	useEffect(() => {
@@ -14,7 +13,6 @@ const Home = () => {
 			const json = await response.json()
 
 			if (response.ok) {
-				// setTables(json)
 				dispatch({type: 'GET_TABLES', payload: json})
 			}
 		}

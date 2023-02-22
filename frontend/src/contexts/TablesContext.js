@@ -20,10 +20,10 @@ export const tablesReducer = (state, action) => {
 			return {
 				tables: state.tables.filter(w => w._id !== action.payload._id)
 			}
-		// case 'UPDATE_TABLE':
-		// 	return {
-		// 		null
-		// 	}
+		case 'UPDATE_TABLE':
+			return {
+				tables: [action.payload, ...state.tables]
+			}
 		default:
 			return state
 	}

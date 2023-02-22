@@ -1,9 +1,13 @@
 import '../css/IndiTable.css'
 import { useLocation } from 'react-router-dom'
+import { useTablesContext } from '../hooks/useTablesContext'
+import { useState } from 'react'
 
 const IndiTable = () => {
+	const { tables, dispatch } = useTablesContext()
   const location = useLocation()
-  const table = location.state
+  let table = location.state
+  const [teamScores, setTeamScores] = useState(table.teamScores)
 
   let wordNumTeams = ''
   switch(table.numTeams) {
@@ -27,6 +31,28 @@ const IndiTable = () => {
       break
     default:
       wordNumTeams = 'three'
+  }
+
+  const handleUpdate = async () => {
+    
+    table = {...table, teamScores}
+    console.log(table)
+
+    const response = await fetch('/api/tables/' + table._id, {
+      method: 'PATCH',
+      body: JSON.stringify(table),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const json = await response.json()
+
+    if (!response.ok) {
+      console.log(json.error)
+    } else {
+      dispatch({type: 'PATCH_TABLE', payload: json})
+    }
   }
    
   return (
@@ -72,7 +98,34 @@ const IndiTable = () => {
               return (
                 <div key={rowIndex*row.length + colIndex} className={className} contentEditable>
                   { Array.isArray(item) ? 
-                    item[0] + " - " + item[1]
+                    // item[0] + " - " + item[1]
+                    (
+                    <div className="indi-scorebox-container">
+                      <input 
+                        className="indi-scorebox-input"
+                        type='number'
+                        value={teamScores[rowIndex][colIndex][0]}
+                        onChange={e => {
+                          let newTeamScore = [...teamScores]
+                          newTeamScore[rowIndex][colIndex][0] = parseInt(e.target.value)
+                          newTeamScore[colIndex][rowIndex][1] = parseInt(e.target.value)
+                          setTeamScores(newTeamScore)
+                        }}
+                      />
+                      -
+                      <input 
+                        className="indi-scorebox-input"
+                        type='number'
+                        value={teamScores[rowIndex][colIndex][1]}
+                        onChange={e => {
+                          let newTeamScore = [...teamScores]
+                          newTeamScore[rowIndex][colIndex][1] = parseInt(e.target.value)
+                          newTeamScore[colIndex][rowIndex][0] = parseInt(e.target.value)
+                          setTeamScores(newTeamScore)
+                        }}
+                      />
+                    </div>
+                    )
                     : 
                     item
                   }
@@ -83,7 +136,7 @@ const IndiTable = () => {
 
         {/* button */}
         <div className="indi-button-container">
-					<button className="blue-button">Update</button>
+					<button className="blue-button" onClick={handleUpdate}>Update</button>
 				</div>
       </div>
     </div>

@@ -79,3 +79,26 @@
     justify-content: center;
     padding: 20px 0px;
 }
+
+.indi-scorebox-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.indi-scorebox-input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 30px;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .indi-scorebox-input:focus {
+    background-color: #bfbfbf;
+} */
