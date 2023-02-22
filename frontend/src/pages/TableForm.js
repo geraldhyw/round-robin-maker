@@ -1,6 +1,8 @@
 import '../css/TableForm.css'
 
 import { useEffect, useState } from 'react'
+import { useTablesContext } from '../hooks/useTablesContext'
+import { useNavigate } from 'react-router-dom'
 
 const TableForm = () => {
   const [tableName, setTableName] = useState('')
@@ -16,8 +18,11 @@ const TableForm = () => {
   const [teamName6, setTeamName6] = useState('')
   const [teamName7, setTeamName7] = useState('')
   const [teamName8, setTeamName8] = useState('')
-  
 
+  const { tables, dispatch } = useTablesContext()
+
+  const navigate = useNavigate()
+  
   const createBaseTeamScores = (numTeams, teamNames) => {
     let teamScores = new Array(numTeams+1).fill(new Array(numTeams+3).fill(''))
     // let teamScores = new Array(numTeams+1)
@@ -61,19 +66,19 @@ const TableForm = () => {
   const handleCreate = async (e) => {
     e.preventDefault() 
 
-    console.log(tableName)
-    console.log(numTeams)
-    console.log(winPoints)
-    console.log(drawPoints)
-    console.log(losePoints)
-    console.log(teamName1)
-    console.log(teamName2)
-    console.log(teamName3)
-    console.log(teamName4)
-    console.log(teamName5)
-    console.log(teamName6)
-    console.log(teamName7)
-    console.log(teamName8)
+    // console.log(tableName)
+    // console.log(numTeams)
+    // console.log(winPoints)
+    // console.log(drawPoints)
+    // console.log(losePoints)
+    // console.log(teamName1)
+    // console.log(teamName2)
+    // console.log(teamName3)
+    // console.log(teamName4)
+    // console.log(teamName5)
+    // console.log(teamName6)
+    // console.log(teamName7)
+    // console.log(teamName8)
 
     let teamNames = [teamName1, teamName2, teamName3, teamName4, teamName5, teamName6, teamName7, teamName8]
     let teamScores = createBaseTeamScores(numTeams, teamNames)
@@ -93,7 +98,9 @@ const TableForm = () => {
     if (!response.ok) {
       console.log(json.error)
     } else {
+      dispatch({type: 'CREATE_TABLE', payload: json})
       console.log('success!')
+      navigate('/', { replace: true })
     }
   }
 

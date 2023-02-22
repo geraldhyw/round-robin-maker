@@ -1,8 +1,11 @@
 import '../css/TableCard.css'
 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { useTablesContext } from '../hooks/useTablesContext'
 
 const TableCard = ({table}) => {
+
+  const { tables, dispatch } = useTablesContext()
   
   const handleDelete = (e) => {
     e.stopPropagation()
@@ -14,6 +17,7 @@ const TableCard = ({table}) => {
       const json = await response.json()
 
       if (response.ok) {
+        dispatch({type: "DELETE_TABLE", payload: json})
         console.log("delete success")
       }
     }

@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import '../css/Home.css'
 import TableCard from '../components/TableCard'
 import { useEffect, useState } from 'react'
+import { useTablesContext } from '../hooks/useTablesContext'
 
 const Home = () => {
-	const [tables, setTables] = useState([])
+	// const [tables, setTables] = useState([])
+	const { tables, dispatch } = useTablesContext()
 
 	useEffect(() => {
 		const fetchTables = async () => {
@@ -12,7 +14,8 @@ const Home = () => {
 			const json = await response.json()
 
 			if (response.ok) {
-				setTables(json)
+				// setTables(json)
+				dispatch({type: 'GET_TABLES', payload: json})
 			}
 		}
 
