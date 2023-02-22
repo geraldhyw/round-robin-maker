@@ -91,10 +91,8 @@ const TableForm = () => {
     const json = await response.json()
 
     if (!response.ok) {
-      // do something
       console.log(json.error)
     } else {
-      // do smth
       console.log('success!')
     }
   }

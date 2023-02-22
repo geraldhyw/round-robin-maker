@@ -4,6 +4,7 @@
     margin: 0px var(--horizontal-margin);
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .card-container-left, .card-container-right {
