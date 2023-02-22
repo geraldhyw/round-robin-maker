@@ -64,6 +64,16 @@
     grid-template-columns: repeat(9, 1fr);
 }
 
+.seven {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.eight {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+}
+
 .indi-button-container {
     display: flex;
     justify-content: center;
